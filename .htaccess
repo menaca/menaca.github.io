@@ -1,0 +1,15 @@
+
+Options -Indexes
+
+ErrorDocument 400 http://menaca.cf
+ErrorDocument 401 http://menaca.cf
+ErrorDocument 403 http://menaca.cf
+ErrorDocument 404 http://menaca.cf/notfound.html
+ErrorDocument 503 http://menaca.cf
+
+RewriteEngine Off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
